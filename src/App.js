@@ -7,6 +7,7 @@ import { LineGraph } from './LineGraph';
 import { Map } from './Map';
 import { Table } from './Table';
 import 'leaflet/dist/leaflet.css';
+import { prettyPrintStat } from './Utils/prettyPrintStat';
 
 function App() {
   const [country, setCountry] = useState('worldwide');
@@ -60,18 +61,18 @@ function App() {
         <div className='app__stats'>
           <InfoBox
             title='Coronavarius cases'
-            total={countryInfo.cases}
-            cases={countryInfo.todayCases}
+            total={prettyPrintStat(countryInfo.cases)}
+            cases={prettyPrintStat(countryInfo.todayCases)}
           />
           <InfoBox
             title='Recoverd'
-            total={countryInfo.recovered}
-            cases={countryInfo.todayRecovered}
+            total={prettyPrintStat(countryInfo.recovered)}
+            cases={prettyPrintStat(countryInfo.todayRecovered)}
           />
           <InfoBox
             title='Deaths'
-            total={countryInfo.deaths}
-            cases={countryInfo.todayDeaths}
+            total={prettyPrintStat(countryInfo.deaths)}
+            cases={prettyPrintStat(countryInfo.todayDeaths)}
           />
         </div>
         <Map countries={mapCountries} center={mapCenter} zoom={mapZoom} />
