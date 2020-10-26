@@ -1,9 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FormControl, MenuItem, Select } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import './Header.css';
-function Header() {
+
+import { sortData } from '../Utils';
+
+function Header({ country, onCountryChange, setTableData }) {
   const [countries, setCountries] = useState([]);
-  const [country, setCountry] = useState('worldwide');
 
   useEffect(() => {
     const getCounriesData = async () => {
@@ -14,18 +17,15 @@ function Header() {
             name: country.country,
             value: country.countryInfo.iso2,
           }));
-
+          const sortedData = sortData(data);
           setCountries(countries);
+          setTableData(sortedData);
         });
     };
 
     getCounriesData();
   }, []);
 
-  const onCountryChange = async (event) => {
-    const countryCode = event.target.value;
-    setCountry(countryCode);
-  };
   return (
     <div className='header'>
       <h1>COVID Tracker</h1>
