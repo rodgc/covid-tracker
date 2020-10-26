@@ -4,3 +4,12 @@
   margin-bottom: 20px;
   justify-content: space-between;
 }
+
+.header > h1 {
+  color: red;
+  border-radius: 5px;
+}
+
+.header__dropdown {
+  background-color: white;
+}
