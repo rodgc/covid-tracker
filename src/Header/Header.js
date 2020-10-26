@@ -5,7 +5,7 @@ import './Header.css';
 
 import { sortData } from '../Utils';
 
-function Header({ country, onCountryChange, setTableData }) {
+function Header({ country, onCountryChange, setTableData, setMapCountries }) {
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ function Header({ country, onCountryChange, setTableData }) {
           const sortedData = sortData(data);
           setCountries(countries);
           setTableData(sortedData);
+          setMapCountries(data);
         });
     };
 
